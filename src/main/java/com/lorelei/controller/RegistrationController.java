@@ -1,23 +1,36 @@
 package com.lorelei.controller;
 
-import com.lorelei.user.UserDTO;
-import org.springframework.ui.Model;
+import com.lorelei.model.user.User;
+import com.lorelei.model.user.UserDTO;
+import com.lorelei.service.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+@RestController
 public class RegistrationController
 {
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/user/registration")
     public ModelAndView register(
             @ModelAttribute("user") @Valid UserDTO userDTO,
             HttpServletRequest httpServletRequest,
             Errors errors)
     {
-        return null;
+        ModelAndView mav = new ModelAndView();
+
+        User user = userService.register(userDTO);
+
+        mav.addObject("user", user);
+
+        return mav;
     }
 }

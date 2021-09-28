@@ -1,11 +1,12 @@
 package com.lorelei.auth.validation;
 
 import com.lorelei.auth.validation.annotations.PasswordMatches;
+import com.lorelei.model.user.UserDTO;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, String>
+public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object>
 {
     @Override
     public void initialize(PasswordMatches constraintAnnotation)
@@ -14,8 +15,10 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
     }
 
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext)
+    public boolean isValid(Object obj, ConstraintValidatorContext constraintValidatorContext)
     {
-        return false;
+        UserDTO user = (UserDTO) obj;
+
+        return user.getPassword().equals(user.getMatchingPassword());
     }
 }

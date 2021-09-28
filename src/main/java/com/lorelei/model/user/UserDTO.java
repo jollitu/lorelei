@@ -1,11 +1,13 @@
-package com.lorelei.user;
+package com.lorelei.model.user;
 
+import com.lorelei.auth.validation.annotations.PasswordMatches;
 import com.lorelei.auth.validation.annotations.ValidEmail;
 import com.lorelei.auth.validation.annotations.ValidUsername;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+@PasswordMatches
 public class UserDTO
 {
     @NotNull
