@@ -1,6 +1,8 @@
 create database if not exists user;
 
-create table if not exists user(
+use user;
+
+create table if not exists user_info(
     user_auto_id int auto_increment primary key,
     username varchar(20) not null,
     password varchar(20) not null,
