@@ -1,6 +1,6 @@
 package com.lorelei.service.user;
 
-import com.lorelei.dao.user.UserDAO;
+import com.lorelei.repo.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserAuthManagementDAO
 {
     @Autowired
-    private UserDAO userDAO;
+    private UserRepository userRepository;
 
     public boolean resetPassword(String email, String password)
     {

@@ -1,6 +1,6 @@
-create database if not exists user;
+create database if not exists lorelei;
 
-use user;
+use lorelei;
 
 create table if not exists user_info(
     user_auto_id int auto_increment primary key,

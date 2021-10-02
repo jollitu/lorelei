@@ -1,9 +1,18 @@
 package com.lorelei.model.user;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
+@Entity
 public class User
 {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
+
     private String username;
 
     private String password;
@@ -13,7 +22,7 @@ public class User
     // All below fields are created after the account, so they are present
     // here, but not in the UserDTO.
 
-    private String lastLogin;
+    /*private String lastLogin;
 
     // TODO convert string to actual masterlist object
     private List<String> masterlistEntries;
@@ -28,24 +37,34 @@ public class User
 
     private boolean enabled = true;
 
-    private boolean credentialsStillValid = true;
+    private boolean credentialsStillValid = true;*/
 
     public User()
     {
     }
 
-    public User(String username, String password, String email, String lastLogin, List<String> masterlistEntries, List<String> favoritesList, String profile, boolean banned, boolean enabled, boolean credentialsStillValid)
+    public User(String username, String password, String email/*, String lastLogin, List<String> masterlistEntries, List<String> favoritesList, String profile, boolean banned, boolean enabled, boolean credentialsStillValid*/)
     {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.lastLogin = lastLogin;
+        /*this.lastLogin = lastLogin;
         this.masterlistEntries = masterlistEntries;
         this.favoritesList = favoritesList;
         this.profile = profile;
         this.banned = banned;
         this.enabled = enabled;
-        this.credentialsStillValid = credentialsStillValid;
+        this.credentialsStillValid = credentialsStillValid;*/
+    }
+
+    public Integer getId()
+    {
+        return id;
+    }
+
+    public void setId(Integer id)
+    {
+        this.id = id;
     }
 
     public String getUsername()
@@ -78,7 +97,7 @@ public class User
         this.email = email;
     }
 
-    public String getLastLogin()
+  /*  public String getLastLogin()
     {
         return lastLogin;
     }
@@ -146,5 +165,5 @@ public class User
     public void setCredentialsStillValid(boolean credentialsStillValid)
     {
         this.credentialsStillValid = credentialsStillValid;
-    }
+    }*/
 }

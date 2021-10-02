@@ -1,12 +1,17 @@
 package com.lorelei.service.user;
 
+import com.lorelei.repo.user.UserRepository;
 import com.lorelei.model.user.User;
 import com.lorelei.model.user.UserDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService
 {
+    @Autowired
+    private UserRepository userRepository;
+
     public User register(UserDTO userDTO)
     {
         // TODO:
@@ -19,9 +24,9 @@ public class UserService
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
 
-        // TODO: DB hookup for save
+        User newUser = userRepository.save(user);
 
-        return new User();
+        return newUser;
     }
 
     public User login(UserDTO userDTO)
