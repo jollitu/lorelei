@@ -16,8 +16,22 @@ public class UserService
     {
         // TODO:
         // 1. Check if username already exists
+        User existing = userRepository.getByUsername(userDTO.getUsername());
+
+        if (existing != null)
+        {
+            // TODO
+        }
+
         // 2. Check if email is already in use
+        existing = userRepository.getByEmail(userDTO.getEmail());
+
+        if (existing != null)
+        {
+            // TODO
+        }
         // 3. Check if account is active and direct to a reactivate page if not
+
         User user = new User();
 
         user.setUsername(userDTO.getUsername());

@@ -11,6 +11,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.ContextLoaderListener;
@@ -42,6 +43,14 @@ public class LoreleiConfig implements WebApplicationInitializer
                 new TomcatServletWebServerFactory();
 
         return tomcatServletWebServerFactory;
+    }
+
+    @Bean(name="entityManagerFactory")
+    public LocalSessionFactoryBean sessionFactory()
+    {
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+
+        return sessionFactory;
     }
 
     @Override
